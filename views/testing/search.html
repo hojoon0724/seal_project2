@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Search Function with Teleport</title>
+  </head>
+  <body>
+    <div class="search-container">
+      <form class="search-form" id="find-city">
+        <input type="search" class="search" name="user-input" placeholder="Search" id="user-term" />
+        <input type="button" value="search" onclick="fetchCitySearchResults()" />
+      </form>
+    </div>
+    <div class="search-results"></div>
+  </body>
+  <script>
+    const baseUrl = "https://api.teleport.org/api/";
+    const citySearchString = "cities/?search=";
+    let searchByNameUrl = `${baseUrl}${citySearchString}`;
+
+    function makeUrl() {
+      let searchString = document.querySelector("#user-term").value;
+      return searchByNameUrl + searchString;
+    }
+
+    async function fetchCitySearchResults() {
+      let url = makeUrl();
+      const response = await fetch(url);
+      const data = await response.json();
+      const searchResults = await data._embedded["city:search-results"];
+      console.log(searchResults);
+      for (i = 0; i < searchResults.length; i++) {
+        renderSearchResults(searchResults);
+        console.log(searchResults[i].matching_full_name);
+      }
+    }
+
+    function renderSearchResults(searchResults) {
+      let cityName = searchResults[i].matching_full_name;
+      let cityUrl = searchResults[i]._links["city:item"].href;
+      $searchResultsDiv = $(".search-results");
+      $searchResultsDiv.append(`<a href="${cityUrl}">${cityName}</a>`);
+      getSearchResultCityDetails(cityUrl);
+      $searchResultsDiv.append(`<br>--------<br>`);
+    }
+
+    async function getSearchResultCityDetails(cityUrl) {
+      let url = cityUrl;
+      const response = await fetch(url);
+      const detailsData = await response.json();
+      $searchResultsDiv.append(`population: ${detailsData.population}`);
+      return detailsData;
+    }
+
+    let searchArrayResponse = {
+      _embedded: {
+        "city:search-results": [
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1850147/",
+              },
+            },
+            matching_alternate_names: [
+              {
+                name: "Tokyo",
+              },
+              {
+                name: "tokyo",
+              },
+            ],
+            matching_full_name: "Tokyo, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1863440/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Hachiōji, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1857871/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Machida, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1864518/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Chōfu, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1850692/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Nishi-Tokyo-shi, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1860437/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Kamirenjaku, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1862599/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Hino, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:7279570/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Higashimurayama, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1854162/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Ōme, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1849186/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Urayasu, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1856367/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Musashino, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1858964/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Kokubunji, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1850693/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Tanashichō, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1907148/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Fussa, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:1861261/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Itsukaichi, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:11611487/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Tachikawa, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:11611617/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Kunitachi, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:11611618/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Miyake, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:11611619/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Hachijō, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:11611620/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Ōshima, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:11611621/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Ogasawara, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:6822129/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Tama, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:6822130/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Musashimurayama, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:6822132/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Akishima, Tokyo, Japan",
+          },
+          {
+            _links: {
+              "city:item": {
+                href: "https://api.teleport.org/api/cities/geonameid:6822136/",
+              },
+            },
+            matching_alternate_names: [],
+            matching_full_name: "Higashiyamato, Tokyo, Japan",
+          },
+        ],
+      },
+      _links: {
+        curies: [
+          {
+            href: "https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/",
+            name: "location",
+            templated: true,
+          },
+          {
+            href: "https://developers.teleport.org/api/resources/City/#!/relations/{rel}/",
+            name: "city",
+            templated: true,
+          },
+          {
+            href: "https://developers.teleport.org/api/resources/UrbanArea/#!/relations/{rel}/",
+            name: "ua",
+            templated: true,
+          },
+          {
+            href: "https://developers.teleport.org/api/resources/Country/#!/relations/{rel}/",
+            name: "country",
+            templated: true,
+          },
+          {
+            href: "https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/",
+            name: "a1",
+            templated: true,
+          },
+          {
+            href: "https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/",
+            name: "tz",
+            templated: true,
+          },
+        ],
+        self: {
+          href: "https://api.teleport.org/api/cities/?search=tokyo&geohash=",
+        },
+      },
+      count: 25,
+    };
+  </script>
+</html>
