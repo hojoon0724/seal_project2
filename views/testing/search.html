@@ -8,24 +8,24 @@
   </head>
   <body>
     <div class="search-container">
-      <form class="search-form" id="find-city">
-        <input type="search" class="search" name="user-input" placeholder="Search" id="user-term" />
-        <input type="button" value="search" onclick="fetchCitySearchResults()" />
-      </form>
+      <input type="text" class="search" placeholder="Search" id="user-text" />
+      <input type="button" value="search" id="search-button" onclick="fetchCitySearchResults()" />
     </div>
-    <div class="search-results"></div>
+    <ul class="search-results"></ul>
   </body>
   <script>
     const baseUrl = "https://api.teleport.org/api/";
     const citySearchString = "cities/?search=";
     let searchByNameUrl = `${baseUrl}${citySearchString}`;
+    let $searchResultsDiv = $(".search-results");
 
     function makeUrl() {
-      let searchString = document.querySelector("#user-term").value;
-      return searchByNameUrl + searchString;
+      let searchString = document.querySelector("#user-text").value;
+      return searchByNameUrl + searchString + "&limit=5";
     }
 
     async function fetchCitySearchResults() {
+      $searchResultsDiv.empty();
       let url = makeUrl();
       const response = await fetch(url);
       const data = await response.json();
@@ -33,33 +33,45 @@
       console.log(searchResults);
       for (i = 0; i < searchResults.length; i++) {
         renderSearchResults(searchResults);
-        console.log(searchResults[i].matching_full_name);
       }
     }
+
+    let searchField = document.getElementById("user-text");
+    searchField.addEventListener("keydown", function (event) {
+      if (event.code === "Enter") {
+        fetchCitySearchResults();
+      }
+    });
 
     function renderSearchResults(searchResults) {
       let cityName = searchResults[i].matching_full_name;
       let cityUrl = searchResults[i]._links["city:item"].href;
       let urlString = cityUrl.match(/geonameid:(\d+)/);
       let cityIdNumber = urlString ? urlString[1] : null;
-      $searchResultsDiv = $(".search-results");
+
       $searchResultsDiv.append(`
-      <div class="city-result-container" id="${cityIdNumber}">
-        <a href="${cityUrl}">${cityName}</a>
-        </div>`);
-      $searchResultsDiv.append(`<br>--------<br>`);
-      getSearchResultCityDetails(cityUrl);
+      <li class="city-result-container" id="${cityIdNumber}">
+        <div class="${cityName}">
+          <a href="${cityUrl}">${cityName}</a>
+        </div>
+      </li>
+      `);
+
+      getSearchResultCityDetails(cityUrl, cityIdNumber);
     }
 
-    async function getSearchResultCityDetails(cityUrl) {
-      let url = cityUrl;
+    async function getSearchResultCityDetails(url, cityIdNumber) {
       let urlString = url.match(/geonameid:(\d+)/);
-      let cityIdNumber = urlString ? urlString[1] : null;
       const response = await fetch(url);
       const detailsData = await response.json();
       $cityIdNumberDiv = $(`#${cityIdNumber}`);
       $cityIdNumberDiv.append(`population: ${detailsData.population}`);
-      return detailsData;
+      console.log(detailsData);
+      if (detailsData._links["city:urban_area"] == undefined) {
+      } else if (detailsData._links["city:urban_area"].name == detailsData.name) {
+        $cityIdNumberDiv.append(`---true---`);
+        return detailsData;
+      }
     }
   </script>
 </html>
