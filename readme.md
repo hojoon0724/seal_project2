@@ -2,7 +2,7 @@
 
 **Name:** Hojoon Kim
 
-**App Name:** Travel Bucket List
+**App Name:** Urban Passport Log
 
 **Description:** Lets users search and save cities they've been to and those they'd like to go in the future. It uses the Teleport API to populate city details and images.
 
@@ -34,17 +34,22 @@
 
 Table listing all routes
 
-| Route Name | Endpoint      | Method | Description                                                                       |
-| ---------- | ------------- | ------ | --------------------------------------------------------------------------------- |
-| Login      | /user/login   | GET    | User login page                                                                   |
-| Sign-up    | /user/signup  | GET    | User signup page                                                                  |
-| Index      | /index        | GET    | Lists all cities added by the user                                                |
-| Search     | /index/search | GET    | Lets user search for cities                                                       |
-| New        | /index/new    | POST   | User adds it to their collection                                                  |
-| Delete     | /index/delete | DELETE | User deletes from their collection                                                |
-| Update     | /index/update | PUT    | User can update their status or date                                              |
-| Create     | /index/create | POST   | User creates an entry to their collection                                         |
-| Show       | /index/show   | GET    | Site shows the city's details such as when the user visited, the population, etc. |
+| Route Name   | Endpoint         | Method | Description                                                                       |
+| ------------ | ---------------- | ------ | --------------------------------------------------------------------------------- |
+| Login Form   | /user/login      | GET    | User login page                                                                   |
+| Login        | /user/login      | POST   | User login action                                                                 |
+| Sign-up Form | /user/signup     | GET    | User signup page                                                                  |
+| Sign-up      | /user/signup     | POST   | User signup action                                                                |
+| Logout       | /user/logout     | GET    | User signup action                                                                |
+|              |                  |        |                                                                                   |
+| Search       | /index/search    | GET    | Lets user search for existing cities in the Teleport API                          |
+| Index        | /index           | GET    | Lists all cities in the user's collection                                         |
+| New          | /index/new       | POST   | User adds a selection to their collection                                         |
+| Delete       | /index/id/delete | DELETE | Tells the server to delete an entry                                               |
+| Update       | /index/id/update | PUT    | Sending the updates to the DB                                                     |
+| Create       | /index/create    | POST   | User creates an entry to their collection                                         |
+| Edit         | /index/id/edit   | GET    | Editing UI page                                                                   |
+| Show         | /index/id/show   | GET    | Site shows the city's details such as when the user visited, the population, etc. |
 
 ## Design Mockups (Desktop + Mobile)
 
@@ -64,9 +69,10 @@ Table listing all routes
 |          |     | city        |
 |          |     | country     |
 |          |     | population  |
-|          |     | status      |
 |          |     | coordinates |
 |          |     | desktop_img |
 |          |     | mobile_img  |
+|          |     | status      |
+|          |     | date        |
 | user     | --> | creator     |
 | password |     |             |
