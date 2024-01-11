@@ -26,19 +26,27 @@
 
 Table listing all routes
 
-| Route Name | Endpoint | Method | Description                   |
-| ---------- | -------- | ------ | ----------------------------- |
-| Index      | /index   | GET    | Renders all items on the page |
+| Route Name | Endpoint      | Method | Description                                                                       |
+| ---------- | ------------- | ------ | --------------------------------------------------------------------------------- |
+| Login      | /user/login   | GET    | User login page                                                                   |
+| Sign-up    | /user/signup  | GET    | User signup page                                                                  |
+| Index      | /index        | GET    | Lists all cities added by the user                                                |
+| Search     | /index/search | GET    | Lets user search for cities                                                       |
+| New        | /index/new    | GET    | User adds it to their collection                                                  |
+| Delete     | /index/delete | GET    | User deletes from their collection                                                |
+| Update     | /index/update | GET    | User can update their status or date                                              |
+| Create     | /index/create | GET    | User creates an entry to their collection                                         |
+| Show       | /index/show   | GET    | Site shows the city's details such as when the user visited, the population, etc. |
 
 ## Design Mockups (Desktop + Mobile)
 
 #### Desktop Design
 
-add URL
+![Desktop UI preview](./ui-sample/Desktop.png)
 
 #### Mobile Design
 
-add URL
+![Mobile UI preview](./ui-sample/Mobile.png)
 
 ## ERD (Entity Relationship Diagram)
 
