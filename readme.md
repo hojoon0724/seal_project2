@@ -96,6 +96,8 @@ Table listing all routes
 
 #### geonameid Response
 
+https://api.teleport.org/api/cities/geonameid:#######/
+
 - If this exists, then there will be pictures and other data
   `_links["city:urban_area"].href`
 
@@ -112,10 +114,31 @@ Table listing all routes
 
 #### urban_area response
 
+https://api.teleport.org/api/urban_areas/slug:dallas/
+
 - Photos
   `_links["ua:images"].href`
 
 #### images response
 
+https://api.teleport.org/api/urban_areas/slug:dallas/images/
+
 `photos.image.mobile`
 `photos.image.web`
+
+## Object Structure
+
+| data        | source     | required | type    |
+| ----------- | ---------- | -------- | ------- |
+| \_id        | auto       | yes      | string  |
+| geonameid   | geonameid  | no       | string  |
+| city        | geonameid  | yes      | string  |
+| country     | geonameid  | yes      | string  |
+| urban_area  | geonameid  | yes      | boolean |
+| population  | geonameid  | no       | number  |
+| coordinates | geonameid  | no       | string  |
+| desktop_img | urban_area | no       | string  |
+| mobile_img  | urban_area | no       | string  |
+| status      | user       | yes      | string  |
+| date        | user       | no       | string  |
+| creator     | auto       | yes      | string  |
