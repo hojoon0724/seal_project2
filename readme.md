@@ -10,7 +10,7 @@
 
 **Deployed Website:** https://hk-seal-project2.onrender.com
 
-**Trello Board:** https://trello.com/invite/b/JSk1ougO/ATTI0e41e532acb089aa2498249752b4a0da5364C5A4/hk-seal-project2
+**Trello Board:** TBD
 
 ## List of Dependencies (package.json)
 
