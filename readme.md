@@ -76,3 +76,46 @@ Table listing all routes
 |          |     | date        |
 | user     | --> | creator     |
 | password |     |             |
+
+---
+
+## Teleport API Reference
+
+#### Text Search Response
+
+- Full Name
+  `_embedded["city:search-results"].matching_full_name`
+
+- Link to the city's details page
+  `_embedded["city:search-results"]._links["city:item"].href`
+
+- Cities have their unique page
+  `https://api.teleport.org/api/cities/geonameid:#######/`
+
+- `geonameid:#######` is the unique identifier on Teleport
+
+#### geonameid Response
+
+- If this exists, then there will be pictures and other data
+  `_links["city:urban_area"].href`
+
+- Short name
+  `name`
+
+- Population
+  `population`
+
+- Location
+  `location.latlon.geohash`
+  `location.latlon.latitude`
+  `location.latlon.longitude`
+
+#### urban_area response
+
+- Photos
+  `_links["ua:images"].href`
+
+#### images response
+
+`photos.image.mobile`
+`photos.image.web`
