@@ -25,11 +25,15 @@ const app = express();
 // Middleware
 // -----------------------------------------------------
 app.use(morgan("dev"));
+app.use(express.static("public"));
 
 // -----------------------------------------------------
 // Routes INDUCESS
 // -----------------------------------------------------
 // Index
+app.get("/index", (req, res) => {
+  res.render("index.ejs");
+});
 
 // New
 

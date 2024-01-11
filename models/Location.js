@@ -4,6 +4,7 @@
 const mongoose = require("./connection");
 const { Schema, model } = mongoose;
 
+/*
 const locationSchema = new Schema({
   geonameid: { type: Number },
   city: { type: String, required: true },
@@ -19,7 +20,7 @@ const locationSchema = new Schema({
 });
 
 const Location = model("Location", locationSchema);
-
+*/
 // -----------------------------------------------------
 // Export Model
 // -----------------------------------------------------
