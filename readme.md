@@ -17,10 +17,18 @@
 #### Node Dependencies
 
 - express
+- bcrypt
+- mongo
+- ejs
+- express-session
+- method-override
+- mongoose
+- morgan
 
 #### Front-end Dependencies
 
-- alpine
+- jQuery
+- Alpine
 
 ## Route Map
 
@@ -32,10 +40,10 @@ Table listing all routes
 | Sign-up    | /user/signup  | GET    | User signup page                                                                  |
 | Index      | /index        | GET    | Lists all cities added by the user                                                |
 | Search     | /index/search | GET    | Lets user search for cities                                                       |
-| New        | /index/new    | GET    | User adds it to their collection                                                  |
-| Delete     | /index/delete | GET    | User deletes from their collection                                                |
-| Update     | /index/update | GET    | User can update their status or date                                              |
-| Create     | /index/create | GET    | User creates an entry to their collection                                         |
+| New        | /index/new    | POST   | User adds it to their collection                                                  |
+| Delete     | /index/delete | DELETE | User deletes from their collection                                                |
+| Update     | /index/update | PUT    | User can update their status or date                                              |
+| Create     | /index/create | POST   | User creates an entry to their collection                                         |
 | Show       | /index/show   | GET    | Site shows the city's details such as when the user visited, the population, etc. |
 
 ## Design Mockups (Desktop + Mobile)
@@ -50,5 +58,15 @@ Table listing all routes
 
 ## ERD (Entity Relationship Diagram)
 
-This should be a diagram showing your models and any relationships between them.
-add URL
+| USER     |     | CITY        |
+| -------- | --- | ----------- |
+| \_id     |     | \_id        |
+|          |     | city        |
+|          |     | country     |
+|          |     | population  |
+|          |     | status      |
+|          |     | coordinates |
+|          |     | desktop_img |
+|          |     | mobile_img  |
+| user     | --> | creator     |
+| password |     |             |
