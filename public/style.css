@@ -128,3 +128,23 @@ button {
   align-items: center;
   z-index: 2;
 }
+
+.enter-place-container {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.enter-place {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.enter-place > * {
+  padding: 8px 2px;
+}
+
+.enter-place > label {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="enter-place-container">
+      <form action="/index" method="post" class="enter-place">
+        <!-- <label>geonameid<input type="text" name="geonameid" /></label> -->
+        <label>city<input type="text" name="city" /></label>
+        <label>country<input type="text" name="country" /></label>
+        <!-- <label>urban_area<input type="text" name="urban_area" /></label>
+        <label>population<input type="text" name="population" /></label>
+        <label>coordinates<input type="text" name="coordinates" /></label>
+        <label>desktop_img<input type="text" name="desktop_img" /></label>
+        <label>mobile_img<input type="text" name="mobile_img" /></label>
+        <label>status<input type="text" name="status" /></label>
+        <label>date<input type="text" name="date" /></label>
+        <label>creator<input type="text" name="creator" /></label> -->
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
