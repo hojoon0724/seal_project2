@@ -62,7 +62,7 @@ body {
 }
 
 button {
-  background-color: none;
+  background-color: inherit;
   color: inherit;
   border: none;
   padding: 4px;
