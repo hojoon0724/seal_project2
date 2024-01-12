@@ -44,7 +44,6 @@ app.use((req, res, next) => {
 // Index
 app.get("/index", async (req, res) => {
   let allCities = await Location.find({});
-  console.log(allCities);
   res.render("index.ejs", { allCities });
 });
 

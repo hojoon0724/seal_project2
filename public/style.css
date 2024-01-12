@@ -11,6 +11,8 @@
 }
 
 :root {
+  --main-font: "Roboto", sans-serif;
+
   --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
   --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.31rem);
   --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
@@ -18,6 +20,59 @@
   --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
   --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
   --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
+
+  --pri50: #f5f8fa;
+  --pri100: #e9eff5;
+  --pri200: #cfdde8;
+  --pri300: #a5c1d4;
+  --pri400: #74a0bc;
+  --pri500: #5589aa;
+  --pri600: #3f6a8a;
+  --pri700: #345670;
+  --pri800: #2e495e;
+  --pri900: #2b3f4f;
+  --pri950: #1c2935;
+  --pri980: #0e151b;
+  --pri990: #070a0d;
+
+  --sec50: #ffffe8;
+  --sec100: #fffdbf;
+  --sec200: #fffa7a;
+  --sec300: #ffef34;
+  --sec400: #ffdf05;
+  --sec500: #ffba00;
+  --sec600: #f78b00;
+  --sec700: #cc5f00;
+  --sec800: #a54700;
+  --sec900: #8a3c00;
+  --sec950: #4e1d00;
+
+  --error50: #fff3ec;
+  --error100: #ffe4d3;
+  --error200: #ffc4a5;
+  --error300: #ff9c6d;
+  --error400: #ff6732;
+  --error500: #ff3e0a;
+  --error600: #fa2200;
+  --error700: #cc1302;
+  --error800: #a1110b;
+  --error900: #82120c;
+  --error950: #460404;
+
+  --yes50: #e8ffe4;
+  --yes100: #cbffc5;
+  --yes200: #9aff92;
+  --yes300: #5bff53;
+  --yes400: #24fb20;
+  --yes500: #00f300;
+  --yes600: #00b505;
+  --yes700: #028907;
+  --yes800: #086c0c;
+  --yes900: #0c5b11;
+  --yes950: #003305;
+
+  --white: #f6faff;
+  --black: #000b16;
 }
 
 html {
@@ -56,9 +111,9 @@ p {
 }
 
 body {
-  background-color: #111111;
-  color: #eeeeee;
-  font-family: roboto;
+  background-color: var(--pri950);
+  color: var(--pri300);
+  font-family: var(--main-font);
 }
 
 button {
@@ -69,8 +124,8 @@ button {
 }
 
 .nav-bar-container {
-  background-color: black;
-  color: white;
+  background-color: var(--pri980);
+  color: var(--pri100);
   display: flex;
   justify-content: space-between;
   width: 100svw;
@@ -112,7 +167,7 @@ button {
 
 .search-result {
   height: 300px;
-  background-color: #212121;
+  background-color: var(--pri900);
   /* border: 1px solid red; */
   position: relative;
 }
@@ -141,7 +196,7 @@ button {
 }
 
 .action-block {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #070a0d99;
   width: 100%;
   height: auto;
   display: flex;
@@ -154,7 +209,7 @@ button {
 
 .city-name-container {
   width: 100%;
-  color: white;
+  color: var(--pri100);
   font-size: var(--fs-400);
   text-align: center;
   padding-top: 1em;
@@ -203,25 +258,25 @@ button {
 }
 
 .edit-button {
-  border: 1px solid green;
-  color: green;
+  border: 1px solid var(--yes700);
+  color: var(--yes700);
   transition: ease-in-out 0.2s;
 }
 
 .edit-button:hover {
-  background-color: green;
-  color: white;
+  background-color: var(--yes700);
+  color: var(--white);
   transition: ease-in-out 0.2s;
 }
 
 .delete-button button {
-  border: 1px solid red;
-  color: red;
+  border: 1px solid var(--error600);
+  color: var(--error600);
   transition: ease-in-out 0.2s;
 }
 .delete-button button:hover {
-  background-color: red;
-  color: white;
+  background-color: var(--error600);
+  color: var(--white);
   transition: ease-in-out 0.2s;
 }
 
@@ -278,11 +333,11 @@ button {
 
 .banner-city-name {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #070a0d99;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--white);
   font-size: var(--fs-500);
   z-index: 2;
   padding: 0.5em 2em;
