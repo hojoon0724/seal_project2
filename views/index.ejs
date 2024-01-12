@@ -13,19 +13,33 @@
           <div class="city-photo">
             <img src="<%= allCities[i].mobile_img %>" alt="" />
           </div>
-          <div class="city-full-name-container">
-            <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
+          <div class="city-action-container">
+            <div class="action-block">
+              <div class="city-name-container">
+                <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
+              </div>
+
+              <div class="buttons-container">
+                <div class="edit-button">
+                  <button>Edit</button>
+                </div>
+                <div class="delete-button">
+                  <button>Delete</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </a>
       <% } %>
+    </div>
 
-      <!-- <div class="search-result">
+    <!-- <div class="search-result">
         <div class="city-photo">
           <img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />
         </div>
         <div class="city-full-name">Dallas</div>
       </div>  -->
-    </div>
   </body>
+  <%- include("./partials/footer.ejs") %>
 </html>
