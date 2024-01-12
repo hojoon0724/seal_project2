@@ -54,6 +54,10 @@ app.get("/index/new", (req, res) => {
 });
 
 // Delete
+app.delete("/index/:id/", async (req, res) => {
+  let deletedCity = await Location.findByIdAndDelete(req.params.id);
+  res.redirect("/index");
+});
 
 // Update
 

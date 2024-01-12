@@ -10,31 +10,17 @@
       <% for (i=0; i< allCities.length; i++) { %>
       <a href="/index/<%= allCities[i]._id %>">
         <div class="search-result">
-          <%= allCities[i]._id %>
-          <div class="city-full-name"><%= allCities[i].city %> <%= allCities[i].country %></div>
+          <div class="city-photo">
+            <img src="<%= allCities[i].mobile_img %>" alt="" />
+          </div>
+          <div class="city-full-name-container">
+            <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
+          </div>
         </div>
       </a>
       <% } %>
 
       <!-- <div class="search-result">
-        <div class="city-photo">
-          <img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />
-        </div>
-        <div class="city-full-name">Dallas</div>
-      </div>
-      <div class="search-result">
-        <div class="city-photo">
-          <img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />
-        </div>
-        <div class="city-full-name">Dallas</div>
-      </div>
-      <div class="search-result">
-        <div class="city-photo">
-          <img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />
-        </div>
-        <div class="city-full-name">Dallas</div>
-      </div>
-      <div class="search-result">
         <div class="city-photo">
           <img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />
         </div>
