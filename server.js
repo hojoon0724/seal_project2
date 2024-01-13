@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 // Index
 app.get("/index", async (req, res) => {
   let allCities = await Location.find({});
+  console.log(allCities[1].mobile_img);
   res.render("index.ejs", { allCities });
 });
 
@@ -63,8 +64,10 @@ app.delete("/index/:id/", async (req, res) => {
 // Create
 app.post("/index", async (req, res) => {
   console.log(req.body);
-  let location = await Location.create(req.body);
-  res.render("/index");
+  let submissionProcessed = req.body;
+  submissionProcessed.mobile_img = submissionProcessed.desktop_img;
+  let location = await Location.create(submissionProcessed);
+  res.render("index.ejs");
 });
 
 // Edit

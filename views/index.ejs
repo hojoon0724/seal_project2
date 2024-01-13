@@ -39,56 +39,46 @@
               <button>Submit</button>
             </form>
           </div>
-          <a href="/index/65a0bef4a433c6e1a8a31882">
-            <div class="search-result-item">
-              <div class="city-photo">
-                <img src="https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg" alt="" />
-              </div>
-              <div class="city-action-container">
-                <div class="action-block">
-                  <div class="city-name-container">
-                    <div class="city-full-name">New York, United States</div>
-                  </div>
-
-                  <div class="buttons-container">
-                    <div class="edit-button">
-                      <button>Edit</button>
-                    </div>
-                    <div class="delete-button">
-                      <button>Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
         </div>
       </div>
       <div class="collection-container">
         <% for (i=0; i< allCities.length; i++) { %>
-        <a href="/index/<%= allCities[i]._id %>">
-          <div class="collection-item">
-            <div class="city-photo">
-              <img src="<%= allCities[i].mobile_img %>" alt="" />
-            </div>
-            <div class="city-action-container">
-              <div class="action-block">
+
+        <div class="collection-item">
+          <div class="city-photo">
+            <img src="<%= allCities[i].mobile_img %>" alt="" />
+          </div>
+          <div class="city-action-container">
+            <div class="action-block">
+              <a href="/index/<%= allCities[i]._id %>">
                 <div class="city-name-container">
                   <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
                 </div>
+              </a>
 
-                <div class="buttons-container">
-                  <div class="edit-button">
-                    <button>Edit</button>
-                  </div>
-                  <div class="delete-button">
-                    <button>Delete</button>
-                  </div>
+              <div class="location-stats">
+                <table class="location-stats-table">
+                  <tr>
+                    <td>Population</td>
+                    <td>1,234,567</td>
+                  </tr>
+                  <tr>
+                    <td>Status</td>
+                    <td>VISITED on 2024-01-12</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="buttons-container">
+                <a href="/index/<%= allCities[i]._id %>/edit" class="edit-button"> Edit </a>
+                <div class="delete-button">
+                  <button>Delete</button>
                 </div>
               </div>
             </div>
           </div>
-        </a>
+        </div>
+
         <% } %>
       </div>
     </div>

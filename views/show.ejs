@@ -12,9 +12,28 @@
           <div class="banner-city-name"><%= locationDetails.city %>, <%= locationDetails.country%></div>
         </div>
       </div>
-      <form class="index-form" action="/index/<%=locationDetails._id %>?_method=DELETE" method="post">
-        <input type="submit" value="Delete" id="delete-location" />
-      </form>
+
+      <div class="city-info-container">
+        <table class="city-info-table">
+          <tr>
+            <td>Population:</td>
+            <td>1,234,456</td>
+          </tr>
+          <tr>
+            <td>Visited on</td>
+            <td>2024-01-12</td>
+          </tr>
+        </table>
+
+        <div class="buttons-container" style="opacity: 1">
+          <a href="/index/<%= locationDetails._id %>/edit" class="edit-button" style="margin: 8px"> Edit </a>
+          <div class="delete-button" style="margin: 8px">
+            <form class="index-form" action="/index/<%=locationDetails._id %>?_method=DELETE" method="post">
+              <input type="submit" value="Delete" id="delete-location" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

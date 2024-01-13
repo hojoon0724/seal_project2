@@ -13,8 +13,8 @@ const locationSchema = new Schema({
   // coordinates: { type: String },
   desktop_img: { type: String },
   mobile_img: { type: String },
-  // status: { type: String, required: true },
-  // date: { type: String },
+  status: { type: String },
+  date: { type: String },
   // creator: { type: String, required: true },
 });
 
