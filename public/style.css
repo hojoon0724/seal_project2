@@ -114,6 +114,9 @@ body {
   background-color: var(--pri950);
   color: var(--pri300);
   font-family: var(--main-font);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 button {
@@ -129,7 +132,8 @@ button {
   display: flex;
   justify-content: space-between;
   width: 100svw;
-  padding: 16px 8px;
+  padding: 16px 16px;
+  height: 80px;
 }
 .site-title {
   padding: 8px;
@@ -150,25 +154,87 @@ button {
 .log-out {
 }
 
-.search-container {
-  height: 20svh;
+div {
+  /* border: 1px solid red; */
+}
+hr {
+  opacity: 0.2;
+}
+.footer {
+  height: 40px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  letter-spacing: 0.2em;
+  font-size: 0.7em;
+}
+.top-container {
+  /* display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 16px; */
+
+  display: flex;
+  width: 100%;
+  height: calc(100svh - 130px);
+  box-sizing: border-box;
+  padding: 16px;
 }
 
-.search-results-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 8px;
-  column-gap: 8px;
-  margin: 16px;
+.top-container:nth-child(1) {
+  min-width: 500px;
 }
 
-.search-result {
+.search-container {
+  background-color: var(--pri900);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 448px;
+  padding: 16px;
+  overflow: scroll;
+}
+
+.search-box {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pri700);
+  margin: 8px 8px 32px 8px;
+}
+.search-box > input {
+  width: 100%;
+  padding: 8px;
+}
+
+.search-result-item {
+  width: 400px;
   height: 300px;
   background-color: var(--pri900);
-  /* border: 1px solid red; */
+  margin: 8px;
+  position: relative;
+}
+
+.collection-container {
+  background-color: var(--pri980);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-height: 100%;
+  overflow: scroll;
+  /* width: auto; */
+  flex-grow: 1;
+  padding: 16px;
+}
+
+.collection-item {
+  width: 400px;
+  height: 300px;
+  background-color: var(--pri900);
+  margin: 8px;
   position: relative;
 }
 

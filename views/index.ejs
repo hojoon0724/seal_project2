@@ -3,35 +3,39 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/nav.ejs") %>
-    <div class="search-container">
-      <input type="text" placeholder="search" />
-    </div>
-    <div class="search-results-container">
-      <% for (i=0; i< allCities.length; i++) { %>
-      <a href="/index/<%= allCities[i]._id %>">
-        <div class="search-result">
-          <div class="city-photo">
-            <img src="<%= allCities[i].mobile_img %>" alt="" />
-          </div>
-          <div class="city-action-container">
-            <div class="action-block">
-              <div class="city-name-container">
-                <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
-              </div>
-
-              <div class="buttons-container">
-                <div class="edit-button">
-                  <button>Edit</button>
+    <div class="top-container">
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" placeholder="search" />
+        </div>
+      </div>
+      <div class="collection-container">
+        <% for (i=0; i< allCities.length; i++) { %>
+        <a href="/index/<%= allCities[i]._id %>">
+          <div class="collection-item">
+            <div class="city-photo">
+              <img src="<%= allCities[i].mobile_img %>" alt="" />
+            </div>
+            <div class="city-action-container">
+              <div class="action-block">
+                <div class="city-name-container">
+                  <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
                 </div>
-                <div class="delete-button">
-                  <button>Delete</button>
+
+                <div class="buttons-container">
+                  <div class="edit-button">
+                    <button>Edit</button>
+                  </div>
+                  <div class="delete-button">
+                    <button>Delete</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </a>
-      <% } %>
+        </a>
+        <% } %>
+      </div>
     </div>
 
     <!-- <div class="search-result">
