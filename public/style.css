@@ -114,9 +114,6 @@ body {
   background-color: var(--pri950);
   color: var(--pri300);
   font-family: var(--main-font);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 button {
@@ -137,6 +134,10 @@ button {
 }
 .site-title {
   padding: 8px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .login-block-container {
   display: flex;
@@ -190,7 +191,7 @@ hr {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   min-width: 448px;
   padding: 16px;
@@ -209,12 +210,18 @@ hr {
   width: 100%;
   padding: 8px;
 }
+.manual-entry-form-container {
+  height: 400px;
+  width: 100%;
+  background-color: var(--sec500);
+  color: var(--pri900);
+}
 
 .search-result-item {
   width: 400px;
   height: 300px;
   background-color: var(--pri900);
-  margin: 8px;
+  margin: 16px 0px;
   position: relative;
 }
 

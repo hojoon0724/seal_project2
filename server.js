@@ -64,6 +64,7 @@ app.delete("/index/:id/", async (req, res) => {
 app.post("/index", async (req, res) => {
   console.log(req.body);
   let location = await Location.create(req.body);
+  res.render("/index");
 });
 
 // Edit
