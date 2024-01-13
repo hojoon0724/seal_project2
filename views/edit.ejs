@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <form class="city-details-container">
+      <div class="banner-container">
+        <div class="banner-photo">
+          <img src="<%= locationDetails.desktop_img %>" />
+        </div>
+        <div class="banner-city-name-container">
+          <div class="banner-city-name"><%= locationDetails.city %>, <%= locationDetails.country%></div>
+          <div class="banner-photo-url">
+            <label>Banner photo link: </label>
+            <input type="url" name="desktop_img" value="<%= locationDetails.desktop_img %>" />
+          </div>
+        </div>
+      </div>
+
+      <div class="city-info-container">
+        <table class="city-info-table">
+          <tr>
+            <td>Population:</td>
+            <td>1,234,456</td>
+          </tr>
+          <tr>
+            <td><label>Status</label></td>
+            <td>
+              <select name="status">
+                <option value="Visited">Visited</option>
+                <option value="Going">Going</option>
+                <option value="Want to go">Want to go</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Date:</label></td>
+            <td><input type="date" /></td>
+          </tr>
+        </table>
+        <div class="buttons-container" style="opacity: 1">
+          <a href="/index/<%= locationDetails._id %>" class="cancel-button" style="margin: 8px"> Cancel </a>
+          <div class="update-button" style="margin: 8px">
+            <input type="submit" value="Update" id="update-location" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

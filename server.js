@@ -67,10 +67,14 @@ app.post("/index", async (req, res) => {
   let submissionProcessed = req.body;
   submissionProcessed.mobile_img = submissionProcessed.desktop_img;
   let location = await Location.create(submissionProcessed);
-  res.render("index.ejs");
+  res.redirect("/index");
 });
 
 // Edit
+app.get("/index/:id/edit", async (req, res) => {
+  let locationDetails = await Location.findById(req.params.id);
+  res.render("edit.ejs", { locationDetails });
+});
 
 // Seed
 app.get("/index/seed", async (req, res) => {
