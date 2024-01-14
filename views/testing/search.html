@@ -64,12 +64,12 @@
       let urlString = url.match(/geonameid:(\d+)/);
       const response = await fetch(url);
       const detailsData = await response.json();
-      $cityIdNumberDiv = $(`#${cityIdNumber}`);
+      $cityIdNumberDiv = $(`#${cityIdNumber}-photo`);
       $cityIdNumberDiv.append(`population: ${detailsData.population}`);
       console.log(detailsData);
       if (detailsData._links["city:urban_area"] == undefined) {
       } else if (detailsData._links["city:urban_area"].name == detailsData.name) {
-        $cityIdNumberDiv.append(`---true---`);
+        $cityIdNumberDiv.append(`<img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />`);
         return detailsData;
       }
     }

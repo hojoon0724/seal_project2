@@ -5,16 +5,22 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const locationSchema = new Schema({
-  // geonameid: { type: Number },
+  geonameid: { type: Number },
   city: { type: String, required: true },
   country: { type: String, required: true },
-  // urban_area: { type: Boolean, required: true },
-  // population: { type: Number },
-  // coordinates: { type: String },
+  urban_area: { type: String },
+  urban_area_url_exists: { type: Boolean, required: true },
+  population: { type: Number },
+  coordinates: {
+    latitude: { type: Number },
+    longitude: { type: Number },
+  },
+  photo_url: { type: String },
   desktop_img: { type: String },
   mobile_img: { type: String },
   status: { type: String },
   date: { type: String },
+  notes: { type: String },
   // creator: { type: String, required: true },
 });
 

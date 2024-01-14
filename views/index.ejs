@@ -13,32 +13,149 @@
     <div class="top-container">
       <div class="search-container">
         <div class="search-box">
-          <input type="text" placeholder="search" />
+          <input type="text" placeholder="search" id="search-field" />
         </div>
         <div class="search-results-container">
           <div class="manual-entry-form-container">
             <form action="/index" method="post" class="enter-place">
-              <!-- <label>geonameid<input type="text" name="geonameid" /></label> -->
-              <label>city<input type="text" name="city" /></label>
-              <label>country<input type="text" name="country" /></label>
-              <!-- <label>urban_area<input type="text" name="urban_area" /></label> -->
-              <!-- <label>population<input type="text" name="population" /></label> -->
-              <!-- <label>coordinates<input type="text" name="coordinates" /></label> -->
-              <label>desktop_img<input type="url" name="desktop_img" /></label>
+              <!-- <label>geonameid<input type="text" name="geonameid" id="form-geonameid" /></label> -->
+              <label>City:<input type="text" name="city" id="form-city" /></label>
+              <label>Country: <input type="text" name="country" id="form-country" /></label>
+              <!-- <label>Urban Area: <input type="text" name="urban_area" id="form-urban_area" /></label> -->
+              <!-- <label>Population: <input type="text" name="population" id="form-population" /></label> -->
+              <!-- <label>Latitude: <input type="text" name="latitude" id="form-latitude" /></label> -->
+              <!-- <label>Longitude:<input type="text" name="longitude" id="form-longitude" /></label> -->
+              <label>Photo: <input type="url" name="photo_url" id="form-photo_url" /></label>
+              <!-- <label>desktop_img<input type="url" name="desktop_img" /></label> -->
               <!-- <label>mobile_img<input type="text" name="mobile_img" /></label> -->
               <label
-                >status
+                >Status
                 <select name="status">
-                  <option value="Visited">Visited</option>
+                  <option value="Visited">Been There</option>
                   <option value="Going">Going</option>
                   <option value="Want to go">Want to go</option>
                 </select>
               </label>
-              <label>date<input type="date" name="date" /></label>
+              <label>Date<input type="date" name="date" /></label>
+              <label>Travel Notes:<input type="text" name="notes" id="form-notes" /></label>
               <!-- <label>creator<input type="text" name="creator" /></label> -->
               <button>Submit</button>
             </form>
           </div>
+          <div class="search-results-div"></div>
+
+          <script>
+            const baseUrl = "https://api.teleport.org/api/";
+            const citySearchString = "cities/?search=";
+            let searchByNameUrl = `${baseUrl}${citySearchString}`;
+            let $searchResultsDiv = $(".search-results-div");
+
+            function makeUrl() {
+              let searchString = document.querySelector("#search-field").value;
+              return searchByNameUrl + searchString + "&limit=5";
+            }
+
+            async function fetchCitySearchResults() {
+              $searchResultsDiv.empty();
+              let url = makeUrl();
+              const response = await fetch(url);
+              const responseJson = await response.json();
+              const citiesFoundArray = await responseJson._embedded["city:search-results"];
+              // console.log(searchResults);
+              for (i = 0; i < citiesFoundArray.length; i++) {
+                let cityUrl = citiesFoundArray[i]._links["city:item"].href;
+
+                foundCityObject = await getCityDetails(cityUrl);
+                console.dir(await foundCityObject);
+                await renderSearchResults(foundCityObject);
+              }
+            }
+
+            async function getCityDetails(cityUrl) {
+              const response = await fetch(cityUrl);
+              const cityData = await response.json();
+
+              let foundCityObject = {
+                geonameid: cityData.geoname_id,
+                city: cityData.name,
+                country: cityData._links["city:country"].name,
+                urban_area: "",
+                urban_area_url_exists: false,
+                population: cityData.population,
+                coordinates: {
+                  latitude: cityData.location.latlon.latitude,
+                  longitude: cityData.location.latlon.longitude,
+                },
+                photo_url: "https://www.creativefabrica.com/wp-content/uploads/2022/08/28/City-Urban-Landscape-Graphics-37214691-1.jpg",
+                desktop_img: "https://www.creativefabrica.com/wp-content/uploads/2022/08/28/City-Urban-Landscape-Graphics-37214691-1.jpg",
+                mobile_img: "https://www.creativefabrica.com/wp-content/uploads/2022/08/28/City-Urban-Landscape-Graphics-37214691-1.jpg",
+                status: "",
+                date: "",
+                notes: "",
+              };
+
+              if (cityData._links["city:urban_area"] == undefined) {
+                foundCityObject.urban_area_url_exists = false;
+              } else if (cityData._links["city:urban_area"].name.includes(cityData.name)) {
+                foundCityObject.urban_area = cityData._links["city:urban_area"].href;
+                foundCityObject.urban_area_url_exists = true;
+                cityPhotos = await getCityPhotos(foundCityObject.urban_area);
+                foundCityObject.desktop_img = await cityPhotos.desktop_img;
+                foundCityObject.mobile_img = await cityPhotos.mobile_img;
+              }
+              console.dir(`after if/urban ${await foundCityObject}`);
+              return foundCityObject;
+            }
+
+            async function getCityPhotos(urban_area) {
+              const response = await fetch(`${urban_area}images/`);
+              const cityImages = await response.json();
+              cityPhotos = {
+                mobile_img: cityImages.photos[0].image.mobile,
+                desktop_img: cityImages.photos[0].image.web,
+              };
+              console.dir(`after photos ${cityPhotos}`);
+              return cityPhotos;
+            }
+
+            async function renderSearchResults(foundCityObject) {
+              console.log(`renderSearchResults console ${foundCityObject}`);
+              $searchResultsDiv.append(`
+                <div class="search-result-item" id="${foundCityObject.geonameid}">
+                  <div class="city-photo">
+                    <img src="${foundCityObject.mobile_img}" />
+                  </div>
+                  <div class="city-action-container">
+                    <div class="action-block">
+                      <div class="city-name-container">
+                        <div class="city-full-name">
+                          ${foundCityObject.city}, ${foundCityObject.country}
+                        </div>
+                      </div>
+                      <div class="location-stats">
+                        <table class="location-stats-table">
+                          <tr>
+                            <td>Population</td>
+                            <td>${foundCityObject.population}</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="buttons-container">
+                        <div class="add-city-button">Add</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `);
+            }
+
+            let searchField = document.getElementById("search-field");
+            searchField.addEventListener("keydown", function (event) {
+              if (event.code === "Enter") {
+                fetchCitySearchResults();
+              }
+            });
+          </script>
         </div>
       </div>
       <div class="collection-container">
@@ -60,11 +177,15 @@
                 <table class="location-stats-table">
                   <tr>
                     <td>Population</td>
-                    <td>1,234,567</td>
+                    <td><%= allCities[i].population %></td>
                   </tr>
                   <tr>
                     <td>Status</td>
-                    <td>VISITED on 2024-01-12</td>
+                    <td><%= allCities[i].status %></td>
+                  </tr>
+                  <tr>
+                    <td>Date</td>
+                    <td><%= allCities[i].date %></td>
                   </tr>
                 </table>
               </div>
@@ -82,13 +203,6 @@
         <% } %>
       </div>
     </div>
-
-    <!-- <div class="search-result">
-        <div class="city-photo">
-          <img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/dallas-a55f677457.jpg" />
-        </div>
-        <div class="city-full-name">Dallas</div>
-      </div>  -->
   </body>
   <%- include("./partials/footer.ejs") %>
 </html>

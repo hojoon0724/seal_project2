@@ -64,10 +64,37 @@ app.delete("/index/:id/", async (req, res) => {
 // Create
 app.post("/index", async (req, res) => {
   console.log(req.body);
-  let submissionProcessed = req.body;
-  submissionProcessed.mobile_img = submissionProcessed.desktop_img;
-  let location = await Location.create(submissionProcessed);
-  res.redirect("/index");
+  let form = req.body;
+
+  if (form.desktop_img || form.mobile_img === undefined) {
+    form.desktop_img = form.photo_url;
+    form.mobile_img = form.photo_url;
+  }
+
+  form.urban_area === undefined ? (form.urban_area_url_exists = false) : (form.urban_area_url_exists = true);
+
+  let locationFormatted = {
+    geonameid: form.geonameid,
+    city: form.city,
+    country: form.country,
+    urban_area: form.urban_area,
+    urban_area_url_exists: form.urban_area_url_exists,
+    population: form.population,
+    coordinates: {
+      latitude: form.latitude,
+      longitude: form.longitude,
+    },
+    photo_url: form.photo_url,
+    desktop_img: form.desktop_img,
+    mobile_img: form.mobile_img,
+    status: form.status,
+    date: form.date,
+    notes: form.notes,
+  };
+
+  let location = await Location.create(locationFormatted);
+  res.send(location);
+  // res.redirect("/index");
 });
 
 // Edit
