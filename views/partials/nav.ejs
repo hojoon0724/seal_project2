@@ -7,8 +7,13 @@
     <div class="log-in">
       <button>log in</button>
     </div>
-    <div class="log-out">
+    <div class="log-out" id="1234">
       <button>log out</button>
     </div>
   </div>
 </div>
+<script>
+  $("#1234").on("click", (passOnData) => {
+    console.log(passOnData);
+  });
+</script>

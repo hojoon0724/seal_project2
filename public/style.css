@@ -242,6 +242,10 @@ hr {
   display: flex;
 }
 
+.hidden-form {
+  display: none;
+}
+
 .collection-container {
   background-color: var(--pri980);
   display: grid;
@@ -296,7 +300,8 @@ hr {
 }
 
 .add-city-button {
-  background-color: var(--pri100);
+  background-color: var(--sec600);
+  color: var(--pri990);
   padding: 8px 24px;
   position: absolute;
   justify-self: end;
@@ -346,23 +351,31 @@ hr {
   transition-delay: 0.1s;
 }
 
-.city-action-container:hover > .action-block {
+.city-action-container:hover > .action-block,
+.city-action-container:hover > form > .action-block {
   height: auto;
   transition: ease-in-out 0.4s;
   height: 300px;
 }
-.city-action-container:hover > .action-block > .city-name-container {
+.city-action-container:hover > .action-block > .city-name-container,
+.city-action-container:hover > form > .action-block > .city-name-container {
   transition: ease-in-out 0.4s;
 }
-.city-action-container:hover > .action-block > .buttons-container {
+.city-action-container:hover > .action-block > .buttons-container,
+.city-action-container:hover > form > .action-block > .buttons-container {
   opacity: 1;
   transition: ease-in-out 0.4s;
   transition-delay: 0.1s;
 }
-.city-action-container:hover > .action-block > .location-stats {
+.city-action-container:hover > .action-block > .location-stats,
+.city-action-container:hover > form > .action-block > .location-stats {
   opacity: 1;
   transition: ease-in-out 0.4s;
   transition-delay: 0.1s;
+}
+
+.search-overlay-form {
+  width: 100%;
 }
 
 .location-stats {

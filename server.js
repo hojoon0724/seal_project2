@@ -44,7 +44,6 @@ app.use((req, res, next) => {
 // Index
 app.get("/index", async (req, res) => {
   let allCities = await Location.find({});
-  console.log(allCities[1].mobile_img);
   res.render("index.ejs", { allCities });
 });
 
@@ -66,7 +65,8 @@ app.post("/index", async (req, res) => {
   console.log(req.body);
   let form = req.body;
 
-  if (form.desktop_img || form.mobile_img === undefined) {
+  if (form.desktop_img === undefined && form.mobile_img === undefined) {
+    console.log("no photos");
     form.desktop_img = form.photo_url;
     form.mobile_img = form.photo_url;
   }
@@ -93,8 +93,8 @@ app.post("/index", async (req, res) => {
   };
 
   let location = await Location.create(locationFormatted);
-  res.send(location);
-  // res.redirect("/index");
+  // res.send(location);
+  res.redirect("/index");
 });
 
 // Edit
@@ -114,6 +114,7 @@ app.get("/index/seed", async (req, res) => {
 // Show
 app.get("/index/:id", async (req, res) => {
   let locationDetails = await Location.findById(req.params.id);
+  console.log(locationDetails);
   res.render("show.ejs", { locationDetails });
 });
 
