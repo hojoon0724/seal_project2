@@ -17,7 +17,7 @@
         <table class="city-info-table">
           <tr>
             <td>Population</td>
-            <td><%= locationDetails.population %></td>
+            <td><%= locationDetails.population.toLocaleString() %></td>
           </tr>
           <tr>
             <td>Status</td>
@@ -28,6 +28,9 @@
             <td><%= locationDetails.date %></td>
           </tr>
         </table>
+
+        <div class="travel-notes-title" style="font-size: var(--fs-400); margin-bottom: 0px">Notes</div>
+        <div class="travel-notes"><%= locationDetails.notes %></div>
 
         <div class="buttons-container" style="opacity: 1">
           <a href="/index/<%= locationDetails._id %>/edit" class="edit-button" style="margin: 8px"> Edit </a>

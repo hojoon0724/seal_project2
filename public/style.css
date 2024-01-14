@@ -580,6 +580,14 @@ hr {
   margin: 2rem;
 }
 
+.travel-notes {
+  width: 80ch;
+  min-height: 5rem;
+  background-color: var(--pri900);
+  color: var(--pri100);
+  padding: 1ch;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
   }

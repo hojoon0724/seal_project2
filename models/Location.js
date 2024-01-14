@@ -9,7 +9,7 @@ const locationSchema = new Schema({
   city: { type: String, required: true },
   country: { type: String, required: true },
   urban_area: { type: String },
-  urban_area_url_exists: { type: Boolean, required: true },
+  urban_area_url_exists: { type: Boolean },
   population: { type: Number },
   coordinates: {
     latitude: { type: Number },

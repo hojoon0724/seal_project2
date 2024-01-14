@@ -45,6 +45,7 @@ app.use((req, res, next) => {
 app.get("/index", async (req, res) => {
   let allCities = await Location.find({});
   res.render("index.ejs", { allCities });
+  // res.send(allCities);
 });
 
 // New
@@ -59,13 +60,45 @@ app.delete("/index/:id/", async (req, res) => {
 });
 
 // Update
+app.put("/index/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    let updateForm = req.body;
+
+    let locationFormatted = {
+      geonameid: updateForm.geonameid,
+      city: updateForm.city,
+      country: updateForm.country,
+      urban_area: updateForm.urban_area,
+      urban_area_url_exists: updateForm.urban_area_url_exists,
+      population: updateForm.population,
+      coordinates: {
+        latitude: updateForm.latitude,
+        longitude: updateForm.longitude,
+      },
+      photo_url: updateForm.photo_url,
+      desktop_img: updateForm.photo_url,
+      mobile_img: updateForm.photo_url,
+      status: updateForm.status,
+      date: updateForm.date,
+      notes: updateForm.notes,
+    };
+    // console.dir(locationFormatted);
+    // console.log(id);
+    let updateCity = await Location.findByIdAndUpdate(id, locationFormatted);
+    res.redirect(`/index/${id}`);
+  } catch (error) {
+    console.log(`====== ${error} ======`);
+    res.status(400).send("yo, something's not working");
+  }
+});
 
 // Create
 app.post("/index", async (req, res) => {
   console.log(req.body);
   let form = req.body;
 
-  if (form.desktop_img === undefined && form.mobile_img === undefined) {
+  if (form.desktop_img === "" && form.mobile_img === "") {
     console.log("no photos");
     form.desktop_img = form.photo_url;
     form.mobile_img = form.photo_url;
