@@ -22,6 +22,7 @@ async function fetchCitySearchResults() {
     // console.dir(await foundCityObject);
     await renderSearchResults(foundCityObject);
   }
+  addCustomSearchDiv();
 }
 
 async function getCityDetails(cityUrl) {
@@ -71,61 +72,93 @@ async function getCityPhotos(urban_area) {
   return cityPhotos;
 }
 
+function addCustomSearchDiv() {
+  $searchResultsDiv.append(
+    `<div class="manual-entry-form-container">
+      <summary class="custom-entry">Can't find the city? Add it manually</summary>
+      <form action="/index" method="post" class="enter-place">
+        <!-- <label>geonameid<input type="text" name="geonameid" id="form-geonameid" /></label> -->
+        <label>City:<input type="text" name="city" id="form-city" /></label>
+        <label>Country: <input type="text" name="country" id="form-country" /></label>
+        <!-- <label>Urban Area: <input type="text" name="urban_area" id="form-urban_area" /></label> -->
+        <!-- <label>Population: <input type="text" name="population" id="form-population" /></label> -->
+        <!-- <label>Latitude: <input type="text" name="latitude" id="form-latitude" /></label> -->
+        <!-- <label>Longitude:<input type="text" name="longitude" id="form-longitude" /></label> -->
+        <label>Photo: <input type="url" name="photo_url" id="form-photo_url" /></label>
+        <!-- <label>desktop_img<input type="url" name="desktop_img" /></label> -->
+        <!-- <label>mobile_img<input type="text" name="mobile_img" /></label> -->
+        <label
+          >Status
+          <select name="status" id="custom-search">
+            <option value="Visited">Visited</option>
+            <option value="Going">Going</option>
+            <option value="Want to go">Want to go</option>
+          </select>
+        </label>
+        <label>Date<input type="date" name="date" /></label>
+        <!-- <label>Travel Notes:<input type="text" name="notes" id="form-notes" /></label> -->
+        <!-- <label>creator<input type="text" name="creator" /></label> -->
+        <button>Submit</button>
+      </form>
+    </div>`
+  );
+}
+
 async function renderSearchResults(foundCityObject) {
   // console.log(`renderSearchResults console ${foundCityObject}`);
   $searchResultsDiv.append(`
-                          <div class="search-result-item" id="${foundCityObject.geonameid}-1">
-                            <div class="city-photo">
-                              <img src="${foundCityObject.mobile_img}" />
-                            </div>
-                            <div class="city-action-container">
-                              <form action="/index" method="post" class="search-overlay-form">
-                                <div class="action-block">
-                                  <div class="city-name-container">
-                                    <div class="city-full-name">${foundCityObject.city}, ${foundCityObject.country}</div>
-                                  </div>
-                                  <div class="location-stats">
-                                    <table class="location-stats-table">
-                                      <tr>
-                                        <td>Population</td>
-                                        <td>${foundCityObject.population.toLocaleString()}</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Status</td>
-                                        <td>
-                                          <select name="status">
-                                            <option value="Visited">Visited</option>
-                                            <option value="Going">Going</option>
-                                            <option value="Want to go">Want to go</option>
-                                          </select>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td colspan="2"><input type="date" name="date" value="${foundCityObject.date}" /></td>
-                                      </tr>
-                                    </table>
-                                    <input type="text" class="hidden-form" name="geonameid" value="${foundCityObject.geonameid}" id="form-geonameid" />
-                                    <input type="text" class="hidden-form" name="city" value="${foundCityObject.city}" id="form-city" />
-                                    <input type="text" class="hidden-form" name="country" value="${foundCityObject.country}" id="form-country" />
-                                    <input type="text" class="hidden-form" name="urban_area" value="${foundCityObject.urban_area}" id="form-urban_area" />
-                                    <input type="text" class="hidden-form" name="population" value="${foundCityObject.population}" id="form-population" />
-                                    <input type="text" class="hidden-form" name="latitude" value="${foundCityObject.coordinates.latitude}" id="form-latitude" />
-                                    <input type="text" class="hidden-form" name="longitude" value="${foundCityObject.coordinates.longitude}" id="form-longitude" />
-                                    <input type="text" class="hidden-form" name="photo_url" value="" id="form-photo_url" />
-                                    <input type="text" class="hidden-form" name="desktop_img" value="${foundCityObject.desktop_img}" />
-                                    <input type="text" class="hidden-form" name="mobile_img" value="${foundCityObject.mobile_img}" />
-                                    <input type="text" class="hidden-form" name="notes" value="${foundCityObject.notes}" id="form-notes" />
-                                    <input type="text" class="hidden-form" name="creator" value="${foundCityObject.creator}" />
-            
-                                  </div>
-                                  <div class="buttons-container">
-                                    <button class="add-city-button">Add to Collection</button>
-                                  </div>
-                                  </div>
-                                </form>
-                            </div>
-                          </div>
-                          `);
+    <div class="search-result-item" id="${foundCityObject.geonameid}-1">
+      <div class="city-photo">
+        <img src="${foundCityObject.mobile_img}" />
+      </div>
+      <div class="city-action-container">
+        <form action="/index" method="post" class="search-overlay-form">
+          <div class="action-block">
+            <div class="city-name-container">
+              <div class="city-full-name">${foundCityObject.city}, ${foundCityObject.country}</div>
+            </div>
+            <div class="location-stats">
+              <table class="location-stats-table">
+                <tr>
+                  <td>Population</td>
+                  <td>${foundCityObject.population.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>
+                    <select name="status">
+                      <option value="Visited">Visited</option>
+                      <option value="Going">Going</option>
+                      <option value="Want to go">Want to go</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2"><input type="date" name="date" value="${foundCityObject.date}" /></td>
+                </tr>
+              </table>
+              <input type="text" class="hidden-form" name="geonameid" value="${foundCityObject.geonameid}" id="form-geonameid" />
+              <input type="text" class="hidden-form" name="city" value="${foundCityObject.city}" id="form-city" />
+              <input type="text" class="hidden-form" name="country" value="${foundCityObject.country}" id="form-country" />
+              <input type="text" class="hidden-form" name="urban_area" value="${foundCityObject.urban_area}" id="form-urban_area" />
+              <input type="text" class="hidden-form" name="population" value="${foundCityObject.population}" id="form-population" />
+              <input type="text" class="hidden-form" name="latitude" value="${foundCityObject.coordinates.latitude}" id="form-latitude" />
+              <input type="text" class="hidden-form" name="longitude" value="${foundCityObject.coordinates.longitude}" id="form-longitude" />
+              <input type="text" class="hidden-form" name="photo_url" value="" id="form-photo_url" />
+              <input type="text" class="hidden-form" name="desktop_img" value="${foundCityObject.desktop_img}" />
+              <input type="text" class="hidden-form" name="mobile_img" value="${foundCityObject.mobile_img}" />
+              <input type="text" class="hidden-form" name="notes" value="${foundCityObject.notes}" id="form-notes" />
+              <input type="text" class="hidden-form" name="creator" value="${foundCityObject.creator}" />
+
+            </div>
+            <div class="buttons-container">
+              <button class="add-city-button">Add to Collection</button>
+            </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  `);
 }
 
 function sendCityToCollection(foundCityObject) {

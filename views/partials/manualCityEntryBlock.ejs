@@ -1,0 +1,27 @@
+<div class="manual-entry-form-container">
+  <summary class="custom-entry">Can't find the city? Add it manually</summary>
+  <form action="/index" method="post" class="enter-place">
+    <!-- <label>geonameid<input type="text" name="geonameid" id="form-geonameid" /></label> -->
+    <label>City:<input type="text" name="city" id="form-city" /></label>
+    <label>Country: <input type="text" name="country" id="form-country" /></label>
+    <!-- <label>Urban Area: <input type="text" name="urban_area" id="form-urban_area" /></label> -->
+    <!-- <label>Population: <input type="text" name="population" id="form-population" /></label> -->
+    <!-- <label>Latitude: <input type="text" name="latitude" id="form-latitude" /></label> -->
+    <!-- <label>Longitude:<input type="text" name="longitude" id="form-longitude" /></label> -->
+    <label>Photo: <input type="url" name="photo_url" id="form-photo_url" /></label>
+    <!-- <label>desktop_img<input type="url" name="desktop_img" /></label> -->
+    <!-- <label>mobile_img<input type="text" name="mobile_img" /></label> -->
+    <label
+      >Status
+      <select name="status" id="custom-search">
+        <option value="Visited">Visited</option>
+        <option value="Going">Going</option>
+        <option value="Want to go">Want to go</option>
+      </select>
+    </label>
+    <label>Date<input type="date" name="date" /></label>
+    <!-- <label>Travel Notes:<input type="text" name="notes" id="form-notes" /></label> -->
+    <!-- <label>creator<input type="text" name="creator" /></label> -->
+    <button>Submit</button>
+  </form>
+</div>

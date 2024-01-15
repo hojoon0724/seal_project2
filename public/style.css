@@ -212,12 +212,40 @@ hr {
   width: 100%;
   padding: 8px;
 }
-.manual-entry-form-container {
-  height: auto;
-  width: 400px;
+
+.custom-entry {
+  font-size: var(--fs-400);
+  transition: ease-in-out 0.4s;
   padding: 16px;
   background-color: var(--sec500);
+  color: var(--pri980);
+  text-align: left;
+}
+
+.accordion-container {
+  width: 400px;
+  margin: 8px;
+}
+
+.accordion {
+  width: auto;
+  background-color: var(--sec300);
+}
+
+.manual-entry-form-container {
+  width: 400px;
+  padding: 0px 16px 16px 16px;
+  background-color: var(--sec500);
   color: var(--pri900);
+  transition: ease-in-out 0.4s;
+}
+
+select > option {
+  color: var(--pri100);
+}
+
+#custom-search {
+  color: black;
 }
 
 .enter-place button {
@@ -594,5 +622,9 @@ hr {
 }
 
 /* Mobile breakpoint */
-@media (max-width: 920px) {
+@media (max-width: 940px) {
+  .top-container {
+    display: flex;
+    /* flex-direction: column; */
+  }
 }
