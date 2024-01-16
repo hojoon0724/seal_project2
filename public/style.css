@@ -234,7 +234,7 @@ hr {
 
 .manual-entry-form-container {
   width: 400px;
-  padding: 0px 16px 16px 16px;
+  padding: 16px;
   background-color: var(--sec500);
   color: var(--pri900);
   transition: ease-in-out 0.4s;
