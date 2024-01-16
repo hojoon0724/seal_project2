@@ -238,6 +238,7 @@ hr {
   background-color: var(--sec500);
   color: var(--pri900);
   transition: ease-in-out 0.4s;
+  margin: 8px;
 }
 
 select > option {
@@ -246,6 +247,10 @@ select > option {
 
 #custom-search {
   color: black;
+}
+
+.enter-place {
+  justify-content: center;
 }
 
 .enter-place button {
@@ -523,6 +528,7 @@ select > option {
 .enter-place > label {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .city-details-container {
@@ -624,14 +630,16 @@ select > option {
 /* Mobile breakpoint */
 @media (max-width: 940px) {
   .top-container {
-    display: grid;
-    grid-template-rows: 86px 1fr;
+    /* display: grid; */
+    /* grid-template-rows: 86px 1fr; */
+    flex-direction: column;
     margin: 0px;
     padding: 0px;
   }
   .search-container {
     min-width: 100%;
-    padding: 0px 24px;
+    padding: 24px;
+    min-height: 200px !important;
   }
   .search-container > * {
     width: 100%;
@@ -644,6 +652,7 @@ select > option {
 
   .search-results-container {
     width: 100%;
+    display: none;
   }
   .search-result-item {
     width: auto;
@@ -653,11 +662,14 @@ select > option {
   }
   .manual-entry-form-container {
     width: 100%;
+    margin: 0px;
   }
   .collection-container {
     grid-template-columns: repeat(2, 1fr);
     flex-grow: none;
     max-height: 100%;
+    height: auto;
+    /* display: none; */
   }
   .collection-item {
     min-width: 200px;
@@ -666,6 +678,11 @@ select > option {
   }
   #search-field:focus > .top-container {
     grid-template-rows: 1fr 0fr;
+  }
+  .enter-place {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
   }
 }
 
