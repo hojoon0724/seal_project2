@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="city-details-container">
+      <div class="banner-container">
+        <div class="banner-photo">
+          <img src="<%= locationDetails.desktop_img %>" />
+        </div>
+        <div class="banner-city-name-container">
+          <div class="banner-city-name"><%= locationDetails.city %>, <%= locationDetails.country%></div>
+        </div>
+      </div>
+
+      <div class="city-info-container">
+        <table class="city-info-table">
+          <tr>
+            <td>Population</td>
+            <td><%= locationDetails.population.toLocaleString() %></td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td><%= locationDetails.status %></td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td><%= locationDetails.date %></td>
+          </tr>
+        </table>
+
+        <div class="travel-notes-title" style="font-size: var(--fs-400); margin-bottom: 0px">Notes</div>
+        <div class="travel-notes"><%= locationDetails.notes %></div>
+
+        <div class="buttons-container" style="opacity: 1">
+          <a href="/index/<%= locationDetails._id %>/edit" class="edit-button" style="margin: 8px"> Edit </a>
+          <div class="delete-button" style="margin: 8px">
+            <form class="index-form" action="/index/<%=locationDetails._id %>?_method=DELETE" method="post">
+              <input type="submit" value="Delete" id="delete-location" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

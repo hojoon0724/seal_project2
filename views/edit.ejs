@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <form class="city-details-container" action="/index/<%= locationDetails._id %>?_method=PUT" method="post">
+      <div class="banner-container">
+        <div class="banner-photo">
+          <img src="<%= locationDetails.desktop_img %>" />
+        </div>
+        <div class="banner-city-name-container">
+          <div class="banner-city-name"><%= locationDetails.city %>, <%= locationDetails.country%></div>
+          <div class="banner-photo-url">
+            <label>Banner photo link: </label>
+            <input type="url" name="photo_url" value="<%= locationDetails.desktop_img %>" />
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden-form">
+        <input type="text" class="hidden-form" name="geonameid" value="<%= locationDetails.geonameid %>" />
+        <input type="text" class="hidden-form" name="city" value="<%= locationDetails.city %>" />
+        <input type="text" class="hidden-form" name="country" value="<%= locationDetails.country %>" />
+        <input type="text" class="hidden-form" name="urban_area" value="<%= locationDetails.urban_area %>" />
+        <input type="text" class="hidden-form" name="population" value="<%= locationDetails.population %>" />
+        <input type="text" class="hidden-form" name="latitude" value="<%= locationDetails.coordinates.latitude %>" />
+        <input type="text" class="hidden-form" name="longitude" value="<%= locationDetails.coordinates.longitude %>" />
+        <input type="text" class="hidden-form" name="creator" value="<%= locationDetails.creator %>" />
+      </div>
+
+      <div class="city-info-container">
+        <table class="city-info-table">
+          <tr>
+            <td>Population:</td>
+            <td><%= locationDetails.population.toLocaleString() %></td>
+          </tr>
+          <tr>
+            <td><label>Status</label></td>
+            <td>
+              <select name="status">
+                <option value="Visited">Visited</option>
+                <option value="Going">Going</option>
+                <option value="Want to go">Want to go</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Date:</label></td>
+            <td><input type="date" name="date" value="<%= locationDetails.date %>" /></td>
+          </tr>
+        </table>
+        <div>
+          <textarea type="text" class="travel-notes" name="notes" id="form-notes"><%= locationDetails.notes %></textarea>
+        </div>
+        <div class="buttons-container" style="opacity: 1">
+          <a href="/index/<%= locationDetails._id %>" class="cancel-button" style="margin: 8px"> Cancel </a>
+          <div class="update-button" style="margin: 8px">
+            <input type="submit" value="Update" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
