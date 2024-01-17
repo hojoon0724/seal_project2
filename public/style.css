@@ -647,7 +647,7 @@ select > option {
 }
 
 .login-title,
-.signup.title {
+.signup-title {
   text-align: center;
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -683,6 +683,7 @@ select > option {
   margin-top: 2rem;
   padding: 8px;
   background-color: var(--pri700);
+  color: var(--pri50);
   border: 0px;
   transition: ease-in-out 0.2s;
   cursor: pointer;
