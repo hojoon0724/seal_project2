@@ -1,6 +1,6 @@
 [
   {
-    geonameid: "",
+    geonameid: "1234567890",
     city: "New York",
     country: "United States",
     urban_area: "",
