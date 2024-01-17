@@ -5,7 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const seedData = require("./models/seed");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
@@ -13,16 +13,17 @@ const session = require("express-session");
 // -----------------------------------------------------
 // Connection
 // -----------------------------------------------------
-const { PORT, DATABASE_URL, SECRET } = process.env;
-mongoose.connect(DATABASE_URL);
-mongoose.connection.on("open", () => console.log("Connected to mongoose"));
-mongoose.connection.on("close", () => console.log("Disconnected to mongoose"));
-mongoose.connection.on("error", (error) => console.log("Error" + error));
+// const { PORT, DATABASE_URL, SECRET } = process.env;
+// mongoose.connect(DATABASE_URL);
+// mongoose.connection.on("open", () => console.log("Connected to mongoose"));
+// mongoose.connection.on("close", () => console.log("Disconnected to mongoose"));
+// mongoose.connection.on("error", (error) => console.log("Error" + error));
 
 // -----------------------------------------------------
 // Application Object
 // -----------------------------------------------------
 const app = express();
+const { PORT = 3013 } = process.env;
 const Location = require("./models/Location");
 const User = require("./models/User");
 const MongoStore = require("connect-mongo");
