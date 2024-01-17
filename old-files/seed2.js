@@ -42,7 +42,7 @@ console.log(newData);
 fs.writeFile("./newDataStructureTest.js", newData);
 */
 
-const seed1 = require("./models/seed");
+const seed1 = require("../models/seed");
 const fs = require("fs");
 
 let newData = []; // Initialize the newData array
