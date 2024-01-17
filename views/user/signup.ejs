@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
+  <body>
+    <%- include("../partials/nav.ejs") %>
+    <div class="signup-container">
+      <form action="/user/signup" method="post" class="user-signup">
+        <div class="signup-title">Sign Up</div>
+        <div class="user-input-container">
+          <label><input type="text" name="username" placeholder="Username" /></label>
+          <label><input type="password" name="password" placeholder="Password" /></label>
+        </div>
+        <input type="submit" value="Create Account" class="submit-button" />
+      </form>
+    </div>
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>

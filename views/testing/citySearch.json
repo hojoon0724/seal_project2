@@ -1,0 +1,112 @@
+{
+  "_embedded": {
+    "city:search-results": [
+      {
+        "_links": {
+          "city:item": {
+            "href": "https://api.teleport.org/api/cities/geonameid:2147714/"
+          }
+        },
+        "matching_alternate_names": [
+          {
+            "name": "Sydney"
+          },
+          {
+            "name": "Sydney City"
+          }
+        ],
+        "matching_full_name": "Sydney, New South Wales, Australia"
+      },
+      {
+        "_links": {
+          "city:item": {
+            "href": "https://api.teleport.org/api/cities/geonameid:6354908/"
+          }
+        },
+        "matching_alternate_names": [
+          {
+            "name": "Sydney"
+          }
+        ],
+        "matching_full_name": "Sydney, Nova Scotia, Canada"
+      },
+      {
+        "_links": {
+          "city:item": {
+            "href": "https://api.teleport.org/api/cities/geonameid:5287262/"
+          }
+        },
+        "matching_alternate_names": [
+          {
+            "name": "Sydney"
+          }
+        ],
+        "matching_full_name": "Buckeye, Arizona, United States (Sydney)"
+      },
+      {
+        "_links": {
+          "city:item": {
+            "href": "https://api.teleport.org/api/cities/geonameid:7303783/"
+          }
+        },
+        "matching_alternate_names": [
+          {
+            "name": "Sydney Mines"
+          }
+        ],
+        "matching_full_name": "Sydney Mines, Nova Scotia, Canada"
+      },
+      {
+        "_links": {
+          "city:item": {
+            "href": "https://api.teleport.org/api/cities/geonameid:5172078/"
+          }
+        },
+        "matching_alternate_names": [
+          {
+            "name": "Sydney"
+          }
+        ],
+        "matching_full_name": "Sidney, Ohio, United States (Sydney)"
+      }
+    ]
+  },
+  "_links": {
+    "curies": [
+      {
+        "href": "https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/",
+        "name": "location",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/City/#!/relations/{rel}/",
+        "name": "city",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/UrbanArea/#!/relations/{rel}/",
+        "name": "ua",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Country/#!/relations/{rel}/",
+        "name": "country",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/",
+        "name": "a1",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/",
+        "name": "tz",
+        "templated": true
+      }
+    ],
+    "self": {
+      "href": "https://api.teleport.org/api/cities/?search=sydney&geohash="
+    }
+  },
+  "count": 5
+}
