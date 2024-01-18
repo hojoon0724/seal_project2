@@ -14,6 +14,6 @@ mongoose.connection.on("close", () => console.log("Disconnected to mongoose"));
 mongoose.connection.on("error", (error) => console.log("Error" + error));
 
 // -----------------------------------------------------
-// Export File
+// Export Code
 // -----------------------------------------------------
-module.exports.mongoose;
+module.exports = mongoose;

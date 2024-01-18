@@ -2,7 +2,7 @@
 // Dependencies
 // -----------------------------------------------------
 
-const mongoose = require("mongoose");
+const mongoose = require("./connection");
 const bcrypt = require("bcryptjs");
 
 // -----------------------------------------------------
@@ -18,6 +18,6 @@ const userSchema = new Schema({
 const User = model("User", userSchema);
 
 // -----------------------------------------------------
-// Export Model
+// Export Code
 // -----------------------------------------------------
 module.exports = User;
