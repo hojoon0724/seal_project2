@@ -12,27 +12,30 @@
     <%- include("./partials/nav.ejs") %>
     <div class="top-container">
       <div class="search-container">
-        <!-- <div class="search-box">
-          <input type="text" placeholder="search" id="search-field" />
-        </div> -->
         <div class="manual-entry-form-container">
-          <form action="/index" method="post" class="enter-place">
-            <label>City:<input type="text" name="city" id="form-city" /></label>
-            <label>Country: <input type="text" name="country" id="form-country" /></label>
-            <label>Photo: <input type="url" name="photo_url" id="form-photo_url" /></label>
-            <label
-              >Status
-              <select name="status" id="custom-search">
-                <option value="Visited">Visited</option>
-                <option value="Going">Going</option>
-                <option value="Want to go">Want to go</option>
-              </select>
-            </label>
-            <label>Date<input type="date" name="date" /></label>
-            <!-- <label>Travel Notes:<input type="text" name="notes" id="form-notes" /></label> -->
-            <button class="manual-entry-submit-button">Submit</button>
-          </form>
+          <input type="checkbox" id="acc" />
+          <label class="tab-label" for="acc">Add a place</label>
+          <div class="manual-entry-form">
+            <form action="/index" method="post" class="enter-place">
+              <div class="writing-part">
+                <label>City:<input type="text" name="city" id="form-city" /></label>
+                <label>Country: <input type="text" name="country" id="form-country" /></label>
+                <label>Photo: <input type="url" name="photo_url" id="form-photo_url" /></label>
+                <label
+                  >Status
+                  <select name="status" id="custom-search">
+                    <option value="Visited">Visited</option>
+                    <option value="Going">Going</option>
+                    <option value="Want to go">Want to go</option>
+                  </select>
+                </label>
+                <label>Date<input type="date" name="date" /></label>
+              </div>
+              <button class="manual-entry-submit-button">Submit</button>
+            </form>
+          </div>
         </div>
+
         <div class="search-results-container">
           <div class="search-results-div"></div>
         </div>
@@ -45,7 +48,7 @@
             <img src="<%= allCities[i].photo_url %>" alt="" />
           </div>
           <div class="city-action-container">
-            <div class="action-block">
+            <div class="action-block <%= allCities[i].status %>">
               <a href="/index/<%= allCities[i]._id %>">
                 <div class="city-name-container">
                   <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>
@@ -54,10 +57,6 @@
 
               <div class="location-stats">
                 <table class="location-stats-table">
-                  <!-- <tr>
-                    <td>Population</td>
-                    <td><%= // allCities[i].population %></td>
-                  </tr> -->
                   <tr>
                     <td>Status</td>
                     <td><%= allCities[i].status %></td>
@@ -99,12 +98,6 @@
         $(".sign-up").addClass("hidden");
         $(".log-in").addClass("hidden");
       }
-    }
-
-    async function runTest() {
-      console.log($userName.html());
-      console.log("function test");
-      console.log($(".site-title").html());
     }
 
     checkUserLogin();
