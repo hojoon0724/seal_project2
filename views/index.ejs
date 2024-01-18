@@ -48,7 +48,7 @@
             <img src="<%= allCities[i].photo_url %>" alt="" />
           </div>
           <div class="city-action-container">
-            <div class="action-block">
+            <div class="action-block <%= allCities[i].status %>">
               <a href="/index/<%= allCities[i]._id %>">
                 <div class="city-name-container">
                   <div class="city-full-name"><%= allCities[i].city %>, <%= allCities[i].country %></div>

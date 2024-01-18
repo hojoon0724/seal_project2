@@ -351,7 +351,6 @@ select > option {
   justify-content: space-between;
   align-items: center;
   transition: ease-in-out 0.4s;
-  padding: 4px;
 }
 
 .city-name-container {
@@ -724,7 +723,7 @@ select > option {
     grid-template-columns: repeat(2, 1fr);
     padding: 8px;
     height: 0%;
-    overflow: visible;
+    overflow: scroll;
   }
   .collection-item {
     min-width: 200px;
@@ -833,4 +832,19 @@ select > option {
 input:checked ~ .manual-entry-form {
   max-height: 100vh;
   transition: 1.6s;
+}
+
+.Visited {
+  border-top: 12px solid var(--pri700);
+  box-sizing: content-box;
+}
+
+.Going {
+  border-top: 12px solid var(--yes500);
+  box-sizing: content-box;
+}
+
+.Want {
+  border-top: 12px solid var(--error500);
+  box-sizing: content-box;
 }
