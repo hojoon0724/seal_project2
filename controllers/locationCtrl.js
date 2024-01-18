@@ -59,17 +59,7 @@ router.put("/:id", async (req, res) => {
 // Create
 router.post("/", async (req, res) => {
   const creator = req.session.username;
-  req.body.username = req.session.username;
   let form = req.body;
-
-  if (form.desktop_img === "" && form.mobile_img === "") {
-    console.log("no photos");
-    form.desktop_img = form.photo_url;
-    form.mobile_img = form.photo_url;
-  }
-
-  // form.urban_area === undefined ? (form.urban_area_url_exists = false) : (form.urban_area_url_exists = true);
-
   let locationFormatted = {
     city: form.city,
     country: form.country,
@@ -86,7 +76,6 @@ router.post("/", async (req, res) => {
   };
   console.dir(locationFormatted);
   let location = await Location.create(locationFormatted);
-  // res.send(location);
   res.redirect("/index");
 });
 
@@ -97,20 +86,10 @@ router.get("/:id/edit", async (req, res) => {
   res.render("edit.ejs", { locationDetails, creator });
 });
 
-// Seed
-// app.get("/index/seed", async (req, res) => {
-//   const creator = req.session.username;
-//   console.log("seeding DB");
-//   await Location.deleteMany({});
-//   await Location.create(req.model.seedData);
-//   res.redirect("/index");
-// });
-
 // Show
 router.get("/:id", async (req, res) => {
   const creator = req.session.username;
   let locationDetails = await Location.findById(req.params.id);
-  console.log(locationDetails);
   res.render("show.ejs", { locationDetails, creator });
 });
 
