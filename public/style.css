@@ -156,6 +156,7 @@ button {
 .log-in,
 .log-out {
   transition: ease-in-out 0.2s;
+  cursor: pointer;
 }
 
 .sign-up:hover,
@@ -847,4 +848,54 @@ input:checked ~ .manual-entry-form {
 .Want {
   border-top: 12px solid var(--error500);
   box-sizing: content-box;
+}
+
+.main-text {
+  font-size: 14vw;
+  padding: 48px;
+  text-wrap: balance !important;
+}
+.main-text::after {
+  content: "";
+  width: 1vw;
+  height: 13vw;
+  display: inline-block;
+  background-color: var(--pri300);
+  margin-left: 3vw;
+  animation: blink 1s steps(2, jump-none) infinite;
+  opacity: 1;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+}
+
+.landing-container {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-login-container {
+  display: flex;
+  justify-content: start;
+  padding: 48px;
+  width: 100%;
+}
+.user-login-container > div {
+  min-width: 150px;
+  padding: 1rem 2rem;
+  text-align: center;
+  margin-right: 2rem;
+  background-color: var(--pri400);
+  color: var(--pri900);
+}
+
+.user-login-container > div:hover {
+  background-color: var(--pri990);
 }

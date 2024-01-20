@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="top-container">
+      <div class="landing-container">
+        <div class="main-text">Write your own travel log</div>
+        <div class="user-login-container">
+          <div class="sign-up"><a href="/user/sign-up"></a>Sign-up</div>
+          <div class="log-in"><a href="/user/login"></a>Log-in</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include("./partials/footer.ejs") %>
+  <script>
+    function checkUserLogin() {
+      const $userName = $("#user-name");
+      console.log($userName.html());
+      if ($userName.html() === "") {
+        console.log(`no user`);
+        $(".hello-user").addClass("hidden");
+        $(".log-out").addClass("hidden");
+      } else {
+        console.log(`user is: ${$userName}`);
+        $(".sign-up").addClass("hidden");
+        $(".log-in").addClass("hidden");
+      }
+    }
+    checkUserLogin();
+  </script>
+</html>

@@ -6,6 +6,17 @@ const Location = require("../models/Location");
 const router = express.Router();
 
 // -----------------------------------------------------
+// Middleware
+// -----------------------------------------------------
+router.use((req, res, next) => {
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/");
+  }
+});
+
+// -----------------------------------------------------
 // Routes
 // -----------------------------------------------------
 // Index

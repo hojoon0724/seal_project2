@@ -47,7 +47,11 @@ app.use("/user", userCtrl);
 // -----------------------------------------------------
 app.get("/", (req, res) => {
   const creator = req.session.username;
-  res.send(`root response`);
+  if (req.session.loggedIn) {
+    res.redirect("/index");
+  } else {
+    res.render("landing.ejs", { creator });
+  }
 });
 
 // -----------------------------------------------------
